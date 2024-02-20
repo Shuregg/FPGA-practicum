@@ -191,7 +191,6 @@ set file "tb/tb_demo.sv"
 set file_obj [get_files -of_objects [get_filesets sim_1] [list "*$file"]]
 set_property -name "file_type" -value "SystemVerilog" -objects $file_obj
 
-
 # Set 'sim_1' fileset properties
 set obj [get_filesets sim_1]
 set_property -name "top" -value "demo_wrapper_nexys_a7" -objects $obj
@@ -499,7 +498,28 @@ move_dashboard_gadget -name {timing_1} -row 0 -col 1
 move_dashboard_gadget -name {utilization_2} -row 1 -col 1
 move_dashboard_gadget -name {methodology_1} -row 2 -col 1
 
+# Set tb_demo as top module
+set_property top tb_demo [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+
 start_gui
+
+# start synthesis
 update_compile_order -fileset sources_1
 reset_run synth_1
 launch_runs synth_1 -jobs 12
+
+# open RTL schematic
+update_compile_order -fileset sources_1
+synth_design -rtl -name rtl_1
+write_schematic -format pdf -orientation landscape -force D:/Study/FPGA-practicum/lab_01_tcl/schematic.pdf
+write_schematic D:/Study/FPGA-practicum/lab_01_tcl/schematic.sch
+# update_compile_order -fileset sources_1
+# update_compile_order -fileset sim_1
+# set_property top tb_demo [get_filesets sim_1]
+# set_property top_lib xil_defaultlib [get_filesets sim_1]
+# update_compile_order -fileset sim_1
+# launch_simulation
+# run 99 us
+
