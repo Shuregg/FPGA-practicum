@@ -10,7 +10,7 @@
 *.xml
 *.lpr
 elaborate.txt
-*.bat
+# *.bat
 # *.tcl
 *.log
 *.pb
