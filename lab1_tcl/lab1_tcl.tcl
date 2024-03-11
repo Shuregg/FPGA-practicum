@@ -568,8 +568,9 @@ launch_runs synth_1 -jobs 12
 # for 2023
 # synth_design -rtl -rtl_skip_mlo -name rtl_1 
 synth_design -rtl -name rtl_1
-
+open_run synth_1 -name synth_1
+show_schematic [get_nets]
 # show_schematic
 # write_schematic -format pdf -orientation landscape H:/Study/FPGA_prac/lab1_tcl/schematic.pdf
-write_schematic -force D:/Study/FPGA-practicum/lab_01_tcl/schematic.sch
-read_schematic D:/Study/FPGA-practicum/lab_01_tcl/schematic.sch
+# write_schematic -force D:/Study/FPGA-practicum/lab_01_tcl/schematic.sch
+# read_schematic D:/Study/FPGA-practicum/lab_01_tcl/schematic.sch
