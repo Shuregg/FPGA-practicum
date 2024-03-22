@@ -2,6 +2,8 @@ module mult_dsp
 #(
   parameter A_WIDTH = 25,
   parameter B_WIDTH = 18,
+//  parameter A_WIDTH = 26,
+//  parameter B_WIDTH = 19,
   parameter R_WIDTH = A_WIDTH + B_WIDTH
 )
 (
@@ -22,6 +24,7 @@ module mult_dsp
   assign res_o  = res_ff;
 
   always_ff @(posedge clk_i) begin
+//  always_ff @(posedge clk_i or posedge rst_i) begin
     if (rst_i) begin
       a_ff <= '0;
       b_ff <= '0;
@@ -31,8 +34,9 @@ module mult_dsp
       b_ff <= b_i;
     end
   end
-
+  
   always_ff @(posedge clk_i) begin
+//  always_ff @(posedge clk_i or posedge rst_i) begin
     if (rst_i)  res_ff <= '0;
     else        res_ff <= mult;
   end

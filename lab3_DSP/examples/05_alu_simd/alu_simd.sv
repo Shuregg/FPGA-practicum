@@ -2,7 +2,8 @@
 module alu_simd
 #(
   parameter N = 4,    // Number of Adders
-  parameter W = 10    // Width of the Adders
+//  parameter W = 10    // Width of the Adders
+  parameter W = 20
 )
 (
   input  logic         clk_i,
@@ -16,7 +17,6 @@ module alu_simd
   logic [W-1:0] a_ff   [N-1:0];
   logic [W-1:0] b_ff   [N-1:0];
   logic [W-1:0] res_ff [N-1:0];
-
 
   always_ff @(posedge clk_i) begin
     for(i=0; i<N; i=i+1)
