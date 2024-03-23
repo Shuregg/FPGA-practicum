@@ -31,3 +31,4 @@ elaborate.txt
 *.ip_user_files
 *.sim
 *.str
+*.wpc
