@@ -1,0 +1,33 @@
+#ignore all files
+#*
+
+#exclude files systemverilog, verilog, waveform
+#!*.sv
+#!*.v
+#!*.wcfg
+
+*.wdf
+*.xml
+*.lpr
+elaborate.txt
+# *.bat
+# *.tcl
+*.log
+*.pb
+*.jou
+*.zip
+
+!**/src
+!**/sim
+!**/tb
+!**/waveform
+!**/mem
+!**/constraints
+!**/not_project_files
+
+**.xpr
+*.cache
+*.runs
+*.ip_user_files
+*.sim
+*.str
