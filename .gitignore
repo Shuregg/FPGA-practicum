@@ -31,5 +31,6 @@ elaborate.txt
 *.runs
 *.ip_user_files
 *.sim
+
 *.str
 *.wpc
