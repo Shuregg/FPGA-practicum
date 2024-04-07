@@ -18,7 +18,6 @@ module syst_ws
   localparam W22 = 8'd6;
   localparam W23 = 8'd7;
 
-
   localparam W_WIDTH = 8;
   localparam X_WIDTH = 8;
 
@@ -129,7 +128,6 @@ module syst_ws
     .psumm_o  (psumm23),
     .x_o      ()
   );
-
 
   assign y1_o = psumm13;
   assign y2_o = psumm23;
