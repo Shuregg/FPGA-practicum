@@ -25,7 +25,8 @@ elaborate.txt
 !**/constraints
 !**/not_project_files
 
-*.xpr
+
+**.xpr
 *.cache
 *.runs
 *.ip_user_files
