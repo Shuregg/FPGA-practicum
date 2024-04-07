@@ -10,7 +10,6 @@ module tb_demo ();
     sw  <= 16'b0000_0000_0000_0000;
   end
 
-
   initial begin
     rst <= 1'b0;
     #1
