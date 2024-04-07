@@ -13,7 +13,7 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="237201fs"></ZoomEndTime>
-      <Cursor1Time time="70000fs"></Cursor1Time>
+      <Cursor1Time time="20200fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="177"></NameColumnWidth>
@@ -31,6 +31,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">1;1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x1_i" type="array">
       <obj_property name="ElementShortName">x1_i[7:0]</obj_property>
@@ -51,6 +52,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">1;2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x2_i" type="array">
       <obj_property name="ElementShortName">x2_i[7:0]</obj_property>
@@ -71,6 +73,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">1;3</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x3_i" type="array">
       <obj_property name="ElementShortName">x3_i[7:0]</obj_property>
@@ -91,6 +94,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">2;1</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x1_pipe" type="array">
       <obj_property name="ElementShortName">x1_pipe[7:0]</obj_property>
@@ -111,6 +115,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">2;2</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x2_pipe" type="array">
       <obj_property name="ElementShortName">x2_pipe[7:0]</obj_property>
@@ -131,6 +136,7 @@
    <wvobject type="divider" fp_name="divider39">
       <obj_property name="label">2;3</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#E0FFFF</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_syst_ws/syst_array_23/x3_pipe" type="array">
       <obj_property name="ElementShortName">x3_pipe[7:0]</obj_property>
