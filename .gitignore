@@ -25,9 +25,12 @@ elaborate.txt
 !**/constraints
 !**/not_project_files
 
+
 **.xpr
 *.cache
 *.runs
 *.ip_user_files
 *.sim
+
 *.str
+*.wpc
