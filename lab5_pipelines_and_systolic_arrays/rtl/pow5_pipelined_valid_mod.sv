@@ -100,7 +100,6 @@ module pow5_pipelined_valid_mod
     assign pow_mul_stage_3 = pow_data_stage_2_ff * pow_input_stage_2_ff;
     assign pow_mul_stage_4 = pow_data_stage_3_ff * pow_input_stage_3_ff;
 
-  // 
   always_ff @ (posedge gated_clk_1)
       pow_data_stage_1_ff <= pow_mul_stage_1;
 
