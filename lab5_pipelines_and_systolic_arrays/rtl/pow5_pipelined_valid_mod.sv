@@ -41,10 +41,10 @@ module pow5_pipelined_valid_mod
   logic pow_input_en_2;
   logic pow_input_en_3;
 
-  logic gated_clk_0;
-  logic gated_clk_1;
-  logic gated_clk_2;
-  logic gated_clk_3;
+  // logic gated_clk_0;
+  // logic gated_clk_1;
+  // logic gated_clk_2;
+  // logic gated_clk_3;
 
     // "Valid" flags
   always_ff @ (posedge clk_i or posedge rst_i)
@@ -71,11 +71,10 @@ module pow5_pipelined_valid_mod
     else
       output_valid_ff <= data_valid_stage_3_ff;
 
-
   // ========= Input data pipeline =========
-  assign gated_clk_1 = clk_i | ~input_valid_ff;
-  assign gated_clk_2 = clk_i | ~data_valid_stage_1_ff;
-  assign gated_clk_3 = clk_i | ~data_valid_stage_2_ff;
+  // assign gated_clk_1 = clk_i | ~input_valid_ff;
+  // assign gated_clk_2 = clk_i | ~data_valid_stage_1_ff;
+  // assign gated_clk_3 = clk_i | ~data_valid_stage_2_ff;
   // assign gated_clk_3 = clk_i | ~data_valid_stage_3_ff;
 
   always_ff @ (posedge clk_i or posedge rst_i)
@@ -85,14 +84,23 @@ module pow5_pipelined_valid_mod
       pow_input_ff <= pow_data_i;
     end
 
-  always_ff @ (posedge gated_clk_1)
+  always_ff @ (posedge clk_i)
+    if(input_valid_ff)
       pow_input_stage_1_ff <= pow_input_ff;
-  
-  always_ff @ (posedge gated_clk_2)
-      pow_input_stage_2_ff <= pow_input_stage_1_ff;
+    else
+      pow_input_stage_1_ff <= pow_input_stage_1_ff;
 
-  always_ff @ (posedge gated_clk_3)
+  always_ff @ (posedge clk_i)
+    if(data_valid_stage_1_ff)
+      pow_input_stage_2_ff <= pow_input_stage_1_ff;
+    else
+      pow_input_stage_2_ff <= pow_input_stage_2_ff;
+
+  always_ff @ (posedge clk_i)
+    if(data_valid_stage_2_ff)
       pow_input_stage_3_ff <= pow_input_stage_2_ff;
+    else
+      pow_input_stage_3_ff <= pow_input_stage_3_ff;
 
     // Multiply numbers
     assign pow_mul_stage_1 = pow_input_ff        * pow_input_ff;
@@ -100,15 +108,24 @@ module pow5_pipelined_valid_mod
     assign pow_mul_stage_3 = pow_data_stage_2_ff * pow_input_stage_2_ff;
     assign pow_mul_stage_4 = pow_data_stage_3_ff * pow_input_stage_3_ff;
 
-  always_ff @ (posedge gated_clk_1)
+  always_ff @ (posedge clk_i)
+    if(input_valid_ff)
       pow_data_stage_1_ff <= pow_mul_stage_1;
+    else
+      pow_data_stage_1_ff <= pow_data_stage_1_ff;
 
-  always_ff @ (posedge gated_clk_2)
+  always_ff @ (posedge clk_i)
+    if(data_valid_stage_1_ff)
       pow_data_stage_2_ff <= pow_mul_stage_2;
+    else
+      pow_data_stage_2_ff <= pow_data_stage_2_ff;
 
-  always_ff @ (posedge gated_clk_3)
+  always_ff @ (posedge clk_i)
+    if(data_valid_stage_2_ff)
       pow_data_stage_3_ff <= pow_mul_stage_3;
-
+    else
+      pow_data_stage_3_ff <= pow_data_stage_3_ff;
+    
   always_ff @ (posedge clk_i or posedge rst_i)
     if(rst_i) begin
       pow_output_ff <= '0;

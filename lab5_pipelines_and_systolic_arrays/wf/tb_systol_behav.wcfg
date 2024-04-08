@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_syst_ws_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_syst_ws" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="754431fs"></ZoomStartTime>
+      <ZoomEndTime time="1049114fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
+      <ValueColumnWidth column_width="172"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="31" />
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/rst_i" type="logic">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">1;1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x1_i" type="array">
+      <obj_property name="ElementShortName">x1_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x1_i[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W11" type="array">
+      <obj_property name="ElementShortName">W11[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W11[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm11" type="array">
+      <obj_property name="ElementShortName">psumm11[16:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm11[16:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">1;2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x2_i" type="array">
+      <obj_property name="ElementShortName">x2_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x2_i[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W12" type="array">
+      <obj_property name="ElementShortName">W12[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W12[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm12" type="array">
+      <obj_property name="ElementShortName">psumm12[17:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm12[17:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">1;3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x3_i" type="array">
+      <obj_property name="ElementShortName">x3_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x3_i[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W13" type="array">
+      <obj_property name="ElementShortName">W13[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W13[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm13" type="array">
+      <obj_property name="ElementShortName">psumm13[18:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm13[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">2;1</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x1_pipe" type="array">
+      <obj_property name="ElementShortName">x1_pipe[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x1_pipe[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W21" type="array">
+      <obj_property name="ElementShortName">W21[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W21[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm21" type="array">
+      <obj_property name="ElementShortName">psumm21[16:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm21[16:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">2;2</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x2_pipe" type="array">
+      <obj_property name="ElementShortName">x2_pipe[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x2_pipe[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W22" type="array">
+      <obj_property name="ElementShortName">W22[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W22[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm22" type="array">
+      <obj_property name="ElementShortName">psumm22[17:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm22[17:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">2;3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#808080</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/x3_pipe" type="array">
+      <obj_property name="ElementShortName">x3_pipe[7:0]</obj_property>
+      <obj_property name="ObjectShortName">x3_pipe[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W23" type="array">
+      <obj_property name="ElementShortName">W23[7:0]</obj_property>
+      <obj_property name="ObjectShortName">W23[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/psumm23" type="array">
+      <obj_property name="ElementShortName">psumm23[18:0]</obj_property>
+      <obj_property name="ObjectShortName">psumm23[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="divider" fp_name="divider39">
+      <obj_property name="label">OUT</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">#FFA500</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/y1_o" type="array">
+      <obj_property name="ElementShortName">y1_o[18:0]</obj_property>
+      <obj_property name="ObjectShortName">y1_o[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/y2_o" type="array">
+      <obj_property name="ElementShortName">y2_o[18:0]</obj_property>
+      <obj_property name="ObjectShortName">y2_o[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/W_WIDTH" type="array">
+      <obj_property name="ElementShortName">W_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">W_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_syst_ws/syst_array_23/X_WIDTH" type="array">
+      <obj_property name="ElementShortName">X_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">X_WIDTH[31:0]</obj_property>
+   </wvobject>
+</wave_config>

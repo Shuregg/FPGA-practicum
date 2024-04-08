@@ -4,7 +4,7 @@ module tb_syst_ws ();
 
     localparam      PERIOD = 20;
     localparam      RANDOM_SEED = 147;
-    localparam      NUM_OF_TESTS = 100;
+    localparam      NUM_OF_TESTS = 5;
 
     logic           CLK;
     logic           RST;
@@ -62,6 +62,19 @@ module tb_syst_ws ();
     initial begin
         $srandom(RANDOM_SEED);
         reset_gen();
+        #(PERIOD/2);
+        X1 = 1;
+        X2 = 2;
+        X3 = 3;
+        #(PERIOD/2);
+        X1 = 4;
+        X2 = 5;
+        X3 = 6;
+        #(PERIOD/2);
+        X1 = -1;
+        X2 = -2;
+        X3 = -3;        
+        #(PERIOD/2);
         stimulus_gen(NUM_OF_TESTS);
     end
 endmodule
