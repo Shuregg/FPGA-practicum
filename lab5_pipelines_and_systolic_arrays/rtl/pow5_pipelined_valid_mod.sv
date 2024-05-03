@@ -87,20 +87,14 @@ module pow5_pipelined_valid_mod
   always_ff @ (posedge clk_i)
     if(input_valid_ff)
       pow_input_stage_1_ff <= pow_input_ff;
-    else
-      pow_input_stage_1_ff <= pow_input_stage_1_ff;
 
   always_ff @ (posedge clk_i)
     if(data_valid_stage_1_ff)
       pow_input_stage_2_ff <= pow_input_stage_1_ff;
-    else
-      pow_input_stage_2_ff <= pow_input_stage_2_ff;
 
   always_ff @ (posedge clk_i)
     if(data_valid_stage_2_ff)
       pow_input_stage_3_ff <= pow_input_stage_2_ff;
-    else
-      pow_input_stage_3_ff <= pow_input_stage_3_ff;
 
     // Multiply numbers
     assign pow_mul_stage_1 = pow_input_ff        * pow_input_ff;
@@ -111,20 +105,14 @@ module pow5_pipelined_valid_mod
   always_ff @ (posedge clk_i)
     if(input_valid_ff)
       pow_data_stage_1_ff <= pow_mul_stage_1;
-    else
-      pow_data_stage_1_ff <= pow_data_stage_1_ff;
 
   always_ff @ (posedge clk_i)
     if(data_valid_stage_1_ff)
       pow_data_stage_2_ff <= pow_mul_stage_2;
-    else
-      pow_data_stage_2_ff <= pow_data_stage_2_ff;
 
   always_ff @ (posedge clk_i)
     if(data_valid_stage_2_ff)
       pow_data_stage_3_ff <= pow_mul_stage_3;
-    else
-      pow_data_stage_3_ff <= pow_data_stage_3_ff;
     
   always_ff @ (posedge clk_i or posedge rst_i)
     if(rst_i) begin

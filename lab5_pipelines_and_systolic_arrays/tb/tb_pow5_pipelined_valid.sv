@@ -12,7 +12,7 @@ module tb_pow5_pipelined_valid_mod;
   logic [(5*DATA_WIDTH)-1:0] pow_data_o;
   logic data_valid_o;
 
-  pow5_pipelined_valid #(
+  pow5_pipelined_valid_mod #(
     .DATA_WIDTH(DATA_WIDTH)
   ) dut (
     .clk_i(CLK),

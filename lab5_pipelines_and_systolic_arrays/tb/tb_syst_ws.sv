@@ -62,19 +62,17 @@ module tb_syst_ws ();
     initial begin
         $srandom(RANDOM_SEED);
         reset_gen();
-        #(PERIOD/2);
+        #(PERIOD);
         X1 = 1;
+        #(PERIOD);
+        X1 = 2;
         X2 = 2;
+        #(PERIOD);
+        X1 = 3;
+        X2 = 4;
         X3 = 3;
-        #(PERIOD/2);
-        X1 = 4;
-        X2 = 5;
-        X3 = 6;
-        #(PERIOD/2);
-        X1 = -1;
-        X2 = -2;
-        X3 = -3;        
-        #(PERIOD/2);
+     
+        #(PERIOD);
         stimulus_gen(NUM_OF_TESTS);
     end
 endmodule
