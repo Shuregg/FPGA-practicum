@@ -19,6 +19,7 @@ module wrapper_crc8
   logic [1:0] state;
   logic       crc_rd;
   logic       data_valid_i;
+  logic       crc_type_i;
 
   assign p_slverr = 1'b0;
 
