@@ -5,6 +5,7 @@ module crc8
   input  logic [7:0] din_i,
   input  logic       data_valid_i,
   input  logic       crc_rd,
+  output logic       state_o,
   output logic [7:0] crc_o
 );
 
@@ -17,6 +18,8 @@ module crc8
   logic [7:0] data_current_ff;  // Текущие данные (сдвиговый регистр)
   logic [3:0] crc_counter_ff;   // Регистр счетчик обработанных бит входного байта данных для состояния вычисления
   logic [7:0] crc_ff;           // Выходные данные CRC
+
+  assign state_o = state_ff;
 
   always_ff @(posedge clk_i)
   begin
@@ -31,8 +34,7 @@ module crc8
         IDLE:
           begin
             crc_counter_ff <= 4'b0;
-            if (data_valid_i) // Если пришли новые данные - переходим
-                                    // в состояние вычисления
+            if (data_valid_i) // Если пришли новые данные - переходим в состояние вычисления
             begin
               state_ff        <= BUSY;
               data_current_ff <= din_i;
@@ -41,7 +43,7 @@ module crc8
               state_ff <= READ; // Если пришел запрос на чтение - переходим в состояние чтения
           end
         BUSY:
-          // CRC8: g(x) = x^8 + x^5 + x^4 + 1, cyclic right shift
+          // CRC8: g(x) = x^8 + x^5 + x^4 + 1, cyclic shift right
           begin
             crc_ff[7] <=  crc_ff[0]^data_current_ff[0];
             crc_ff[6] <=  crc_ff[7];
