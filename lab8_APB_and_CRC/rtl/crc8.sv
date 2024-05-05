@@ -13,7 +13,7 @@ module crc8
   localparam BUSY = 2'b01;
   localparam READ = 2'b10;
 
-  logic [2:0] state_ff;         // Регистр состояний
+  logic [1:0] state_ff;         // Регистр состояний
   logic [7:0] data_current_ff;  // Текущие данные (сдвиговый регистр)
   logic [3:0] crc_counter_ff;   // Регистр счетчик обработанных бит входного байта данных для состояния вычисления
   logic [7:0] crc_ff;           // Выходные данные CRC
@@ -41,6 +41,7 @@ module crc8
               state_ff <= READ; // Если пришел запрос на чтение - переходим в состояние чтения
           end
         BUSY:
+          // CRC8: g(x) = x^8 + x^5 + x^4 + 1, cyclic right shift
           begin
             crc_ff[7] <=  crc_ff[0]^data_current_ff[0];
             crc_ff[6] <=  crc_ff[7];
@@ -52,7 +53,7 @@ module crc8
             crc_ff[0] <=  crc_ff[1];
 
             data_current_ff <= {1'b0,data_current_ff[7:1]};
-            crc_counter_ff  <= crc_counter_ff+ 1'b1;
+            crc_counter_ff  <= crc_counter_ff + 1'b1;
 
             if(crc_counter_ff == 4'b0111)
               state_ff <= IDLE;
