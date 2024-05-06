@@ -14,15 +14,22 @@ module wrapper_crc
   output logic        p_slverr
 );
 
-  // Register addresses enum
-  typedef enum logic [7:0] {
-    // CRC registers addresses
-    CRC_WR_ADDR     = 'h00,
-    CRC_RD_ADDR     = 'h04,
-    CRC_STATE_ADDR  = 'h08, // read only
-    // Control register address
-    CRC_TYPE_ADDR    = 'h0C
-  } reg_addr_e;
+  localparam CRC8_CODE  = 'b0;
+  localparam CRC16_CODE = 'b1;
+
+  // // Register addresses enum
+  // typedef enum logic [7:0] {
+  //   // CRC registers addresses
+  //   CRC_WR_ADDR     = 'h00,
+  //   CRC_RD_ADDR     = 'h04,
+  //   CRC_STATE_ADDR  = 'h08, // read only
+  //   // Control register address
+  //   CRC_TYPE_ADDR   = 'h0C
+  // } reg_addr_e;
+  localparam CRC_WR_ADDR     = 'h00;
+  localparam CRC_RD_ADDR     = 'h04;
+  localparam CRC_STATE_ADDR  = 'h08;
+  localparam CRC_TYPE_ADDR   = 'h0C;
 
   // CRC8 internal signals
   logic       [7:0] crc8_din_i;
@@ -42,12 +49,14 @@ module wrapper_crc
   logic              is_writing;
 
   logic              crc_reg_addr;
+  // reg_addr_e         crc_reg_addr;
 
   // CRC type (mode) regiser (CRC8/CRC16)
-  crc_type_e         crc_type_ff;
+  logic              crc_type;      // wire
+  logic              crc_type_ff;
 
   assign crc_reg_addr = p_adr_i[7:0];
- 
+
   // CRC8 calculator instance
   crc8 i_crc8 (
     .clk_i        ( p_clk_i           ),
@@ -86,7 +95,7 @@ module wrapper_crc
 
   assign is_writing   = cs & p_we_i;     // if it is "Data" phase and "Write" mode
   assign is_reading   = cs & (~p_we_i);  // if it is "Data" phase and "Read" mode (not write)
-  
+
   always_ff @ (posedge p_clk_i) begin
     cs_ack1_ff <= cs_2_ff;
     cs_ack2_ff <= cs_ack1_ff;
@@ -105,7 +114,7 @@ module wrapper_crc
   always_comb begin
     p_dat_o  = '0;
     p_slverr = '0;
-    if(is_reading) begin 
+    if(is_reading) begin
       case(crc_reg_addr)
         // CRC readable registers
         CRC_RD_ADDR:    p_dat_o = crc_type_ff ? {16'b0, crc16_crc_o  } : {24'b0, crc8_crc_o  };
@@ -128,21 +137,21 @@ module wrapper_crc
         // CRC writable registers
         CRC_WR_ADDR: begin
           case(crc_type_ff)
-            CRC8:    crc8_din_i  <= p_dat_i[ 7:0]; 
-            CRC16:   crc16_din_i <= p_dat_i[15:0];
+            CRC8_CODE:    crc8_din_i  <= p_dat_i[ 7:0];
+            CRC16_CODE:   crc16_din_i <= p_dat_i[15:0];
           endcase
         end
       endcase
     end
   end
 
-  // Control registers logic
+  // Writing logic (with reset for control registers)
   always_ff @(posedge p_clk_i) begin
     if(!p_rst_i) begin
       crc_type <= '0;
     end else begin
       if(is_writing) begin
-        if(crc_reg_addr == CRC_TYPE_ADDR) 
+        if(crc_reg_addr == CRC_TYPE_ADDR)
           crc_type <= p_dat_i[0];
       end
     end
@@ -152,22 +161,22 @@ module wrapper_crc
   always_comb begin
     if(is_writing & (crc_reg_addr == CRC_WR_ADDR)) begin
         case(crc_type_ff)
-          CRC8: begin
+          CRC8_CODE: begin
             crc8_data_valid_i  = 1;
             crc8_din_i         = 1;
           end
-          CRC16: begin
+          CRC16_CODE: begin
             crc16_data_valid_i = 1;
             crc16_din_i        = 1;
           end
         endcase
     end else begin
         case(crc_type_ff)
-          CRC8: begin
+          CRC8_CODE: begin
             crc8_data_valid_i  = 0;
             crc8_din_i         = 0;
           end
-          CRC16: begin
+          CRC16_CODE: begin
             crc16_data_valid_i = 0;
             crc16_din_i        = 0;
           end
@@ -178,19 +187,17 @@ module wrapper_crc
   always_comb begin
     if(is_reading & (crc_reg_addr == CRC_RD_ADDR)) begin
       case(crc_type_ff)
-        CRC8:  crc8_crc_rd  = 1;
-        CRC16: crc16_crc_rd = 1;
+        CRC8_CODE:  crc8_crc_rd  = 1;
+        CRC16_CODE: crc16_crc_rd = 1;
       endcase
     end else begin
       case(crc_type_ff)
-        CRC8:  crc8_crc_rd  = 0;
-        CRC16: crc16_crc_rd = 0;
+        CRC8_CODE:  crc8_crc_rd  = 0;
+        CRC16_CODE: crc16_crc_rd = 0;
       endcase
     end
   end
 
-
- 
   // assign crc8_data_valid_i  = (cs &  p_we_i & crc_reg_addr == CRC_WR_ADDR);
   // assign crc8_din_i         = (cs &  p_we_i & crc_reg_addr == CRC_WR_ADDR) ? p_dat_i[7:0]: 8'd0;
   // assign crc8_crc_rd        = (cs & ~p_we_i & crc_reg_addr == CRC_RD_ADDR);
