@@ -20,16 +20,9 @@ module wrapper_crc
     CRC_WR_ADDR     = 'h00,
     CRC_RD_ADDR     = 'h04,
     CRC_STATE_ADDR  = 'h08, // read only
-
     // Control register address
-    CRC_TYPE_ADDR    = 'h0C,
+    CRC_TYPE_ADDR    = 'h0C
   } reg_addr_e;
-
-  // CRC type enum
-  typedef enum logic {
-    CRC8  = 0,
-    CRC16 = 1    
-  } crc_type_e;
 
   // CRC8 internal signals
   logic       [7:0] crc8_din_i;
@@ -48,15 +41,13 @@ module wrapper_crc
   logic              is_reading;
   logic              is_writing;
 
-  reg_addr_e         crc_reg_addr;
+  logic              crc_reg_addr;
 
   // CRC type (mode) regiser (CRC8/CRC16)
   crc_type_e         crc_type_ff;
 
   assign crc_reg_addr = p_adr_i[7:0];
-  assign is_writing   = cs & p_we_i;     // if it is "Data" phase and "Write" mode
-  assign is_reading   = cs & (~p_we_i);  // if it is "Data" phase and "Read" mode (not write)
-
+ 
   // CRC8 calculator instance
   crc8 i_crc8 (
     .clk_i        ( p_clk_i           ),
@@ -65,19 +56,19 @@ module wrapper_crc
     .data_valid_i ( crc8_data_valid_i ),
     .crc_rd       ( crc8_crc_rd       ),
     .crc_o        ( crc8_crc_o        ),
-    .state_o      ( crc8_state_o        )
+    .state_o      ( crc8_state_o      )
   );
 
   // CRC16 calculator instance
   crc16 i_crc16 (
-    .clk_i        ( p_clk_i           ),
-    .rst_i        ( !p_rst_i          ),
+    .clk_i        ( p_clk_i            ),
+    .rst_i        ( !p_rst_i           ),
     .din_i        ( crc16_din_i        ),
     .data_valid_i ( crc16_data_valid_i ),
     .crc_rd       ( crc16_crc_rd       ),
     .crc_o        ( crc16_crc_o        ),
     .state_o      ( crc16_state_o      )
-  )
+  );
 
   logic cs_1_ff;
   logic cs_2_ff;
@@ -93,6 +84,9 @@ module wrapper_crc
   logic cs;
   assign cs = cs_1_ff & (~cs_2_ff);
 
+  assign is_writing   = cs & p_we_i;     // if it is "Data" phase and "Write" mode
+  assign is_reading   = cs & (~p_we_i);  // if it is "Data" phase and "Read" mode (not write)
+  
   always_ff @ (posedge p_clk_i) begin
     cs_ack1_ff <= cs_2_ff;
     cs_ack2_ff <= cs_ack1_ff;
@@ -195,6 +189,8 @@ module wrapper_crc
     end
   end
 
+
+ 
   // assign crc8_data_valid_i  = (cs &  p_we_i & crc_reg_addr == CRC_WR_ADDR);
   // assign crc8_din_i         = (cs &  p_we_i & crc_reg_addr == CRC_WR_ADDR) ? p_dat_i[7:0]: 8'd0;
   // assign crc8_crc_rd        = (cs & ~p_we_i & crc_reg_addr == CRC_RD_ADDR);
