@@ -33,8 +33,7 @@ module crc16
     end
     else begin
       case (state_ff)
-        IDLE:
-          begin
+        IDLE: begin
             crc_counter_ff <= 4'b0;
             if (data_valid_i) // Если пришли новые данные - переходим в состояние вычисления
             begin
@@ -43,30 +42,36 @@ module crc16
             end
             else if (crc_rd)
               state_ff <= READ; // Если пришел запрос на чтение - переходим в состояние чтения
-          end
-        BUSY:
+        end
+        BUSY: begin
           // CRC16: g(x) = x^16 + x^12 + x^5 + 1
-          begin
-            // crc_ff[7] <=  crc_ff[0]^data_current_ff[0];
-            // crc_ff[6] <=  crc_ff[7];
-            // crc_ff[5] <=  crc_ff[6];
-            // crc_ff[4] <=  crc_ff[5];
-            // crc_ff[3] <= (crc_ff[0] ^ data_current_ff[0])^ crc_ff[4];
-            // crc_ff[2] <= (crc_ff[0] ^ data_current_ff[0])^ crc_ff[3];
-            // crc_ff[1] <=  crc_ff[2];
-            // crc_ff[0] <=  crc_ff[1];
+            crc_ff[15] <=  crc_ff[ 0] ^ data_current_ff[0];
+            crc_ff[14] <=  crc_ff[15];
+            crc_ff[13] <=  crc_ff[14];
+            crc_ff[12] <=  crc_ff[13];
+            crc_ff[11] <=  crc_ff[12];
+            crc_ff[10] <= (crc_ff[11] ^ data_current_ff[0]) ^ crc_ff[11];
+            crc_ff[ 9] <=  crc_ff[10];
+            crc_ff[ 8] <=  crc_ff[ 9];
+            crc_ff[ 7] <=  crc_ff[ 8];
+            crc_ff[ 6] <=  crc_ff[ 7];
+            crc_ff[ 5] <=  crc_ff[ 6];
+            crc_ff[ 4] <=  crc_ff[ 5];
+            crc_ff[ 3] <= (crc_ff[ 4] ^ data_current_ff[0]) ^ crc_ff[ 4];
+            crc_ff[ 2] <=  crc_ff[ 3];
+            crc_ff[ 1] <=  crc_ff[ 2];
+            crc_ff[ 0] <=  crc_ff[ 1];
 
             data_current_ff <= {1'b0,data_current_ff[15:1]};
             crc_counter_ff  <= crc_counter_ff + 1'b1;
 
             if(crc_counter_ff == 4'b1111)
               state_ff <= IDLE;
-          end
-        READ:
-          begin
+        end
+        READ: begin
             crc_ff   <= 16'b0;
             state_ff <= IDLE;
-          end
+        end
       endcase
     end
   end
