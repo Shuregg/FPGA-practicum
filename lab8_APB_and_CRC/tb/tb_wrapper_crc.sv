@@ -46,10 +46,26 @@ module tb_wrapper_crc ();
     // Main initial block
     initial begin
       $display("Press \"Run all\" button."); $stop();
-      
+
+      read_register(32'h08);
+      #1200;
       write_register(32'd0, 32'hAA);
-      #1200 write_register(32'd0, 32'h33);
-      #1200 read_register(32'd4);
+      read_register (32'd4);
+      #1200;
+      write_register(32'd0, 32'h33);
+      read_register (32'd4);
+      
+      // Change CRC8 to CRC16
+      #1200;
+      write_register(32'h0C, 32'b1);
+      read_register (32'h0C);
+
+      #1200;
+      write_register(32'd0, 32'hAA);
+      read_register (32'd4);
+      #1200;
+      write_register(32'd0, 32'h33);
+      read_register (32'd4);
       
       $finish();
     end
