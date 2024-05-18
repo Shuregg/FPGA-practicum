@@ -1,6 +1,11 @@
 module tb_wrapper_crc ();
 
-    localparam PERIOD = 100;
+    localparam PERIOD = 10;
+
+    localparam CRC_WR_ADDR    = 32'h0;
+    localparam CRC_RD_ADDR    = 32'h4;
+    localparam CRC_STATE_ADDR = 32'h8;
+    localparam CRC_TYPE_ADDR  = 32'hC;
 
     logic        p_clk_i;
     logic        p_rst_i;
@@ -12,7 +17,7 @@ module tb_wrapper_crc ();
     logic [31:0] p_adr_i;
     logic        p_ready;
 
-    wrapper_crc dut_wrapper_crc (
+    wrapper_crc_v2 dut_wrapper_crc (
         .p_clk_i    ( p_clk_i    ),
         .p_rst_i    ( p_rst_i    ),
         .p_dat_i    ( p_dat_i    ),
@@ -32,8 +37,9 @@ module tb_wrapper_crc ();
         p_we_i     = 'hz;
         p_adr_i    = 'hz;
         p_rst_i    = 1;
-        #200
-        p_rst_i    = 0; // Запись #200 обозначает что смена значения сигнала сброса произойдет через 200нс.
+        repeat(2)
+          @(posedge p_clk_i);
+        p_rst_i    = 0;
     end
 
     // clock gen initial block
@@ -45,28 +51,43 @@ module tb_wrapper_crc ();
 
     // Main initial block
     initial begin
+      wait(~p_rst_i); // wait for reset done
+
       $display("Press \"Run all\" button."); $stop();
 
-      read_register(32'h08);
-      #1200;
-      write_register(32'd0, 32'hAA);
-      read_register (32'd4);
-      #1200;
-      write_register(32'd0, 32'h33);
-      read_register (32'd4);
-      
-      // Change CRC8 to CRC16
-      #1200;
-      write_register(32'h0C, 32'b1);
-      read_register (32'h0C);
+      @(posedge p_clk_i);
+      read_register(CRC_STATE_ADDR);
+      @(posedge p_clk_i);
+      write_register(CRC_WR_ADDR, 32'hAA);
+      @(posedge p_clk_i);
+      read_register (CRC_RD_ADDR);
+      @(posedge p_clk_i);
+      write_register(CRC_WR_ADDR, 32'h33);
+      repeat(8) @(posedge p_clk_i);
+      read_register (CRC_RD_ADDR);
 
-      #1200;
-      write_register(32'd0, 32'hAA);
-      read_register (32'd4);
-      #1200;
-      write_register(32'd0, 32'h33);
-      read_register (32'd4);
-      
+      // Check crc type
+      @(posedge p_clk_i);
+      read_register(CRC_TYPE_ADDR);
+
+      // Change CRC8 to CRC16
+      repeat(5)
+        @(posedge p_clk_i);
+      write_register(CRC_TYPE_ADDR, 32'b1);
+      // @(posedge p_clk_i);
+      read_register (CRC_TYPE_ADDR);
+
+      @(posedge p_clk_i);
+      write_register(CRC_WR_ADDR, 32'hAA);
+      repeat(16) @(posedge p_clk_i);
+      read_register (CRC_RD_ADDR);
+      @(posedge p_clk_i);
+      write_register(CRC_WR_ADDR, 32'h33);
+      repeat(16) @(posedge p_clk_i);
+      read_register (CRC_RD_ADDR);
+
+      @(posedge p_clk_i);
+
       $finish();
     end
 

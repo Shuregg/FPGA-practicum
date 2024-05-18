@@ -1,3 +1,6 @@
+// NOT WORKING
+
+
 `timescale 1ns / 1ps
 
 module wrapper_crc

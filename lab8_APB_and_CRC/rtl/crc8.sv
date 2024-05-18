@@ -21,23 +21,21 @@ module crc8
 
   assign state_o = state_ff;
 
-  always_ff @(posedge clk_i)
-  begin
+  always_ff @(posedge clk_i) begin
     if (rst_i) begin // Сигнал сброса - обнуляем все регистры
       state_ff         <= IDLE;
       data_current_ff  <= 8'b0;
       crc_ff           <= 8'b0;
       crc_counter_ff   <= 4'd0;
-    end
-    else begin
+    end else begin
       case (state_ff)
         IDLE:
           begin
             crc_counter_ff <= 4'b0;
             if (data_valid_i) // Если пришли новые данные - переходим в состояние вычисления
             begin
-              state_ff        <= BUSY;
               data_current_ff <= din_i;
+              state_ff        <= BUSY;
             end
             else if (crc_rd)
               state_ff <= READ; // Если пришел запрос на чтение - переходим в состояние чтения
