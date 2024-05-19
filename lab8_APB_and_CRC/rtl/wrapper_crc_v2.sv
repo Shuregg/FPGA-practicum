@@ -44,13 +44,13 @@ module wrapper_crc_v2
   assign crc_type = crc_type_ff;
 
   crc8 i_crc8 (
-    .clk_i        (p_clk_i),
-    .rst_i        (!p_rst_i),
-    .din_i        (crc8_din_i),
-    .data_valid_i (crc8_data_valid_i),
-    .crc_rd       (crc8_crc_rd),
-    .state_o      (crc8_state),
-    .crc_o        (crc8_crc_o)
+    .clk_i        (p_clk_i),            // input 
+    .rst_i        (!p_rst_i),           // input
+    .din_i        (crc8_din_i),         // input
+    .data_valid_i (crc8_data_valid_i),  // input
+    .crc_rd       (crc8_crc_rd),        // input
+    .state_o      (crc8_state),         // output
+    .crc_o        (crc8_crc_o)          // output
   );
 
   crc16 i_crc16 (
@@ -153,11 +153,6 @@ module wrapper_crc_v2
 
   // New writing logic
   always_comb begin
-    crc8_data_valid_i  = 'b0;
-    crc16_data_valid_i = 'b0;
-    crc8_din_i         = 'b0;
-    crc16_din_i        = 'b0;
-
     if(is_writing) begin
       case(p_adr_i[3:0])
         CRC_WR_ADDR: begin
@@ -176,8 +171,12 @@ module wrapper_crc_v2
 
         // end
       endcase
-    // end else begin
+    end else begin
+      crc8_data_valid_i  = 'b0;
+      crc8_din_i         = 'b0;
 
+      crc16_data_valid_i = 'b0;
+      crc16_din_i        = 'b0;
     end
   end
 
