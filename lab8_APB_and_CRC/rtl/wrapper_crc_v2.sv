@@ -22,17 +22,17 @@ module wrapper_crc_v2
   localparam CRC_STATE_ADDR = 4'h8;
   localparam CRC_TYPE_ADDR  = 4'hC;
 
-  logic [7:0] crc8_din_i;
-  logic [7:0] crc8_crc_o;
-  logic [1:0] crc8_state;
-  logic       crc8_crc_rd;
-  logic       crc8_data_valid_i;
+  logic [ 7:0] crc8_din_i;
+  logic [ 7:0] crc8_crc_o;
+  logic [ 1:0] crc8_state;
+  logic        crc8_crc_rd;
+  logic        crc8_data_valid_i;
 
-  logic [7:0] crc16_din_i;
-  logic [7:0] crc16_crc_o;
-  logic [1:0] crc16_state;
-  logic       crc16_crc_rd;
-  logic       crc16_data_valid_i;
+  logic [15:0] crc16_din_i;
+  logic [15:0] crc16_crc_o;
+  logic [ 1:0] crc16_state;
+  logic        crc16_crc_rd;
+  logic        crc16_data_valid_i;
 
   logic is_writing;
   logic is_reading;
@@ -104,11 +104,12 @@ module wrapper_crc_v2
   //     p_dat_o = {24'd0, state};
   // end
 
+  assign is_writing = cs & p_we_i;
+  assign is_reading = cs & (~p_we_i);
+
   // New reading logic
   always_comb begin
-    p_dat_o      = '0;
-    crc8_crc_rd  = '0;
-    crc16_crc_rd = '0;
+
     if(is_reading) begin
       case(p_adr_i[3:0])
         CRC_RD_ADDR: begin
@@ -121,6 +122,11 @@ module wrapper_crc_v2
               crc16_crc_rd = 'b1;
               p_dat_o      = {24'b0, crc16_crc_o};
             end
+            // default: begin
+            //   crc8_crc_rd  = 'b0;
+            //   crc16_crc_rd = 'b0;
+            //   p_dat_o      = 'b0;
+            // end
           endcase
         end
         CRC_STATE_ADDR:
@@ -133,11 +139,12 @@ module wrapper_crc_v2
         CRC_TYPE_ADDR:
           p_dat_o = {31'b0, crc_type};
       endcase
+    end else begin
+      p_dat_o      = 'b0;
+      crc8_crc_rd  = 'b0;
+      crc16_crc_rd = 'b0;
     end
   end
-
-  assign is_writing = cs & p_we_i;
-  assign is_reading = cs & (~p_we_i);
 
   // // Original write
   // assign data_valid_i = (cs & p_we_i & p_adr_i[3:0]  == 4'd0);
@@ -146,10 +153,10 @@ module wrapper_crc_v2
 
   // New writing logic
   always_comb begin
-    crc8_data_valid_i  = '0;
-    crc16_data_valid_i = '0;
-    crc8_din_i         = '0;
-    crc16_din_i        = '0;
+    crc8_data_valid_i  = 'b0;
+    crc16_data_valid_i = 'b0;
+    crc8_din_i         = 'b0;
+    crc16_din_i        = 'b0;
 
     if(is_writing) begin
       case(p_adr_i[3:0])
@@ -157,7 +164,7 @@ module wrapper_crc_v2
           case(crc_type)
             IS_CRC8: begin
               crc8_data_valid_i  = 'b1;
-              crc8_din_i         = p_dat_i[7:0];
+              crc8_din_i         = p_dat_i[ 7:0];
             end
             IS_CRC16: begin
               crc16_data_valid_i = 'b1;
@@ -174,6 +181,7 @@ module wrapper_crc_v2
     end
   end
 
+  // CRC type register
   always_ff @(posedge p_clk_i) begin
     if(p_rst_i)
       crc_type_ff <= 'b0;
