@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_bram_dp_simple_with_byte_en_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_bram_dp_simple_with_byte_en" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="287601fs"></ZoomEndTime>
+      <Cursor1Time time="60000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="177"></NameColumnWidth>
+      <ValueColumnWidth column_width="192"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="16" />
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/EN_prob" type="array">
+      <obj_property name="ElementShortName">EN_prob[6:0]</obj_property>
+      <obj_property name="ObjectShortName">EN_prob[6:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/err_cnt" type="array">
+      <obj_property name="ElementShortName">err_cnt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">err_cnt[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/CLK_i" type="logic">
+      <obj_property name="ElementShortName">CLK_i</obj_property>
+      <obj_property name="ObjectShortName">CLK_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/RST_i" type="logic">
+      <obj_property name="ElementShortName">RST_i</obj_property>
+      <obj_property name="ObjectShortName">RST_i</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/WA_i" type="array">
+      <obj_property name="ElementShortName">WA_i[9:0]</obj_property>
+      <obj_property name="ObjectShortName">WA_i[9:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/RA_i" type="array">
+      <obj_property name="ElementShortName">RA_i[9:0]</obj_property>
+      <obj_property name="ObjectShortName">RA_i[9:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/WD_i" type="array">
+      <obj_property name="ElementShortName">WD_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WD_i[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/EN_i" type="logic">
+      <obj_property name="ElementShortName">EN_i</obj_property>
+      <obj_property name="ObjectShortName">EN_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/WE_i" type="array">
+      <obj_property name="ElementShortName">WE_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">WE_i[3:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/RD_o" type="array">
+      <obj_property name="ElementShortName">RD_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RD_o[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/NUM_OF_TESTS" type="array">
+      <obj_property name="ElementShortName">NUM_OF_TESTS[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NUM_OF_TESTS[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/RANDOM_SEED" type="array">
+      <obj_property name="ElementShortName">RANDOM_SEED[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RANDOM_SEED[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/PERIOD" type="array">
+      <obj_property name="ElementShortName">PERIOD[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PERIOD[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/COL_WIDTH_" type="array">
+      <obj_property name="ElementShortName">COL_WIDTH_[31:0]</obj_property>
+      <obj_property name="ObjectShortName">COL_WIDTH_[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/RAM_ADDR_BITS_" type="array">
+      <obj_property name="ElementShortName">RAM_ADDR_BITS_[31:0]</obj_property>
+      <obj_property name="ObjectShortName">RAM_ADDR_BITS_[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_bram_dp_simple_with_byte_en/NB_COL_" type="array">
+      <obj_property name="ElementShortName">NB_COL_[31:0]</obj_property>
+      <obj_property name="ObjectShortName">NB_COL_[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#E0FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>
