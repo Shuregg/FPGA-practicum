@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_pow5_pipelined_valid_mod_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_pow5_pipelined_valid_mod" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="24872fs"></ZoomStartTime>
+      <ZoomEndTime time="496873fs"></ZoomEndTime>
+      <Cursor1Time time="196372fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="209"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/rst_i" type="logic">
+      <obj_property name="ElementShortName">rst_i</obj_property>
+      <obj_property name="ObjectShortName">rst_i</obj_property>
+      <obj_property name="CustomSignalColor">#FFA500</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_data_i" type="array">
+      <obj_property name="ElementShortName">pow_data_i[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_data_i[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/data_valid_i" type="logic">
+      <obj_property name="ElementShortName">data_valid_i</obj_property>
+      <obj_property name="ObjectShortName">data_valid_i</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_data_o" type="array">
+      <obj_property name="ElementShortName">pow_data_o[39:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_data_o[39:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_input_ff" type="array">
+      <obj_property name="ElementShortName">pow_input_ff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_input_ff[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_mul_stage_1" type="array">
+      <obj_property name="ElementShortName">pow_mul_stage_1[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_mul_stage_1[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_mul_stage_2" type="array">
+      <obj_property name="ElementShortName">pow_mul_stage_2[23:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_mul_stage_2[23:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_mul_stage_3" type="array">
+      <obj_property name="ElementShortName">pow_mul_stage_3[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_mul_stage_3[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_mul_stage_4" type="array">
+      <obj_property name="ElementShortName">pow_mul_stage_4[39:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_mul_stage_4[39:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFD700</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_data_stage_1_ff" type="array">
+      <obj_property name="ElementShortName">pow_data_stage_1_ff[15:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_data_stage_1_ff[15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_data_stage_2_ff" type="array">
+      <obj_property name="ElementShortName">pow_data_stage_2_ff[23:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_data_stage_2_ff[23:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_data_stage_3_ff" type="array">
+      <obj_property name="ElementShortName">pow_data_stage_3_ff[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_data_stage_3_ff[31:0]</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_input_stage_1_ff" type="array">
+      <obj_property name="ElementShortName">pow_input_stage_1_ff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_input_stage_1_ff[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_input_stage_2_ff" type="array">
+      <obj_property name="ElementShortName">pow_input_stage_2_ff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_input_stage_2_ff[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_input_stage_3_ff" type="array">
+      <obj_property name="ElementShortName">pow_input_stage_3_ff[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_input_stage_3_ff[7:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/pow_output_ff" type="array">
+      <obj_property name="ElementShortName">pow_output_ff[39:0]</obj_property>
+      <obj_property name="ObjectShortName">pow_output_ff[39:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/data_valid_o" type="logic">
+      <obj_property name="ElementShortName">data_valid_o</obj_property>
+      <obj_property name="ObjectShortName">data_valid_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/input_valid_ff" type="logic">
+      <obj_property name="ElementShortName">input_valid_ff</obj_property>
+      <obj_property name="ObjectShortName">input_valid_ff</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/data_valid_stage_1_ff" type="logic">
+      <obj_property name="ElementShortName">data_valid_stage_1_ff</obj_property>
+      <obj_property name="ObjectShortName">data_valid_stage_1_ff</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/data_valid_stage_2_ff" type="logic">
+      <obj_property name="ElementShortName">data_valid_stage_2_ff</obj_property>
+      <obj_property name="ObjectShortName">data_valid_stage_2_ff</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/data_valid_stage_3_ff" type="logic">
+      <obj_property name="ElementShortName">data_valid_stage_3_ff</obj_property>
+      <obj_property name="ObjectShortName">data_valid_stage_3_ff</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_pow5_pipelined_valid_mod/dut/output_valid_ff" type="logic">
+      <obj_property name="ElementShortName">output_valid_ff</obj_property>
+      <obj_property name="ObjectShortName">output_valid_ff</obj_property>
+      <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>
