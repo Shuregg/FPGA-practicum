@@ -7,7 +7,7 @@ module crc16
   input  logic [15:0] din_i,
   input  logic        data_valid_i,
   input  logic        crc_rd,
-  output logic        state_o,
+  output logic [ 1:0] state_o,
   output logic [15:0] crc_o
 );
 
@@ -25,7 +25,7 @@ module crc16
 
   always_ff @(posedge clk_i)
   begin
-    if (rst_i) begin // Сигнал сброса - обнуляем все регистры
+    if (~rst_i) begin // Сигнал сброса - обнуляем все регистры
       state_ff         <= IDLE;
       data_current_ff  <= 16'b0;
       crc_ff           <= 16'b0;
