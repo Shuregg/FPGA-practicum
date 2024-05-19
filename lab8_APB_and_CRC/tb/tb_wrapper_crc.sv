@@ -55,35 +55,45 @@ module tb_wrapper_crc ();
 
       $display("Press \"Run all\" button."); $stop();
 
+      $display("===================== Operations with CRC8 =====================");
       @(posedge p_clk_i);
       read_register(CRC_STATE_ADDR);
+
       @(posedge p_clk_i);
       write_register(CRC_WR_ADDR, 32'hAA);
+
       @(posedge p_clk_i);
       read_register (CRC_RD_ADDR);
+
       @(posedge p_clk_i);
       write_register(CRC_WR_ADDR, 32'h33);
-      repeat(8) @(posedge p_clk_i);
+
+      @(posedge p_clk_i);
       read_register (CRC_RD_ADDR);
 
       // Check crc type
       @(posedge p_clk_i);
       read_register(CRC_TYPE_ADDR);
 
+      $display("===================== Operations with CRC16 =====================");
+
       // Change CRC8 to CRC16
-      repeat(5)
-        @(posedge p_clk_i);
+      @(posedge p_clk_i);
       write_register(CRC_TYPE_ADDR, 32'b1);
-      // @(posedge p_clk_i);
+
+      @(posedge p_clk_i);
       read_register (CRC_TYPE_ADDR);
 
       @(posedge p_clk_i);
       write_register(CRC_WR_ADDR, 32'hAA);
-      repeat(16) @(posedge p_clk_i);
+
+      @(posedge p_clk_i);
       read_register (CRC_RD_ADDR);
+
       @(posedge p_clk_i);
       write_register(CRC_WR_ADDR, 32'h33);
-      repeat(16) @(posedge p_clk_i);
+
+      @(posedge p_clk_i);
       read_register (CRC_RD_ADDR);
 
       @(posedge p_clk_i);
@@ -137,9 +147,14 @@ module tb_wrapper_crc ();
 
         p_enable_i = 1;
 
+        // correct display
+        @(negedge p_clk_i);
+        $display("(%0t) Reading register [%0d] = 0x%0x", $time, p_adr_i, p_dat_o);
+
         wait (p_ready);
 
-        $display("(%0t) Reading register [%0d] = 0x%0x", $time, p_adr_i, p_dat_o);
+        // old display
+        // $display("(%0t) Reading register [%0d] = 0x%0x", $time, p_adr_i, p_dat_o);
 
         @ (posedge p_clk_i);
 
