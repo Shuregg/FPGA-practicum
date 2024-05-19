@@ -21,27 +21,29 @@ module crc8
 
   assign state_o = state_ff;
 
-  always_ff @(posedge clk_i) begin
+  always_ff @(posedge clk_i)
+  begin
     if (rst_i) begin // Сигнал сброса - обнуляем все регистры
       state_ff         <= IDLE;
       data_current_ff  <= 8'b0;
       crc_ff           <= 8'b0;
       crc_counter_ff   <= 4'd0;
-    end else begin
+    end
+    else begin
       case (state_ff)
         IDLE:
           begin
             crc_counter_ff <= 4'b0;
-            if (data_valid_i) // Если пришли новые данные - переходим в состояние вычисления
+            if (data_valid_i) // Если пришли новые данные - переходим
+                                    // в состояние вычисления
             begin
-              data_current_ff <= din_i;
               state_ff        <= BUSY;
+              data_current_ff <= din_i;
             end
             else if (crc_rd)
               state_ff <= READ; // Если пришел запрос на чтение - переходим в состояние чтения
           end
         BUSY:
-          // CRC8: g(x) = x^8 + x^5 + x^4 + 1, cyclic shift right
           begin
             crc_ff[7] <=  crc_ff[0]^data_current_ff[0];
             crc_ff[6] <=  crc_ff[7];
@@ -53,7 +55,7 @@ module crc8
             crc_ff[0] <=  crc_ff[1];
 
             data_current_ff <= {1'b0,data_current_ff[7:1]};
-            crc_counter_ff  <= crc_counter_ff + 1'b1;
+            crc_counter_ff  <= crc_counter_ff+ 1'b1;
 
             if(crc_counter_ff == 4'b0111)
               state_ff <= IDLE;
