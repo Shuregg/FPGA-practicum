@@ -120,7 +120,7 @@ module wrapper_crc_v2
             end
             IS_CRC16: begin
               crc16_crc_rd = 'b1;
-              p_dat_o      = {24'b0, crc16_crc_o};
+              p_dat_o      = {16'b0, crc16_crc_o};
             end
             // default: begin
             //   crc8_crc_rd  = 'b0;
